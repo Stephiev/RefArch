@@ -1,4 +1,4 @@
-namespace LibrarySystem.GraphQL
+namespace LibrarySystem.GraphQL.Books
 {
     public record AddBookInput(
         string Title,

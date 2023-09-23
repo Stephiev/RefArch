@@ -1,11 +1,15 @@
 using System.Threading.Tasks;
 using LibrarySystem.GraphQL.Data;
+using HotChocolate.Types;
 using HotChocolate;
 
-namespace LibrarySystem.GraphQL
+namespace LibrarySystem.GraphQL.Books
 {
-    public class Mutation
+
+    [ExtendObjectType("Mutation")]
+    public class BookMutations
     {
+
         public async Task<AddBookPayload> AddBookAsync(
             AddBookInput input,
             [Service] ApplicationDbContext context)

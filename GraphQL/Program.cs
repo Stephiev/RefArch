@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=snolibrary.db"))
     .AddGraphQLServer()
-    .AddQueryType<Query>()
+    .AddQueryType(d => d.Name("Query"))
+        .AddTypeExtension<BookQueries>()
     .AddMutationType(d => d.Name("Mutation"))
         .AddTypeExtension<BookMutations>();
 

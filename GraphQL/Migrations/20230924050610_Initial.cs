@@ -24,6 +24,21 @@ namespace GraphQL.Migrations
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Movies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
+                    Director = table.Column<string>(type: "TEXT", maxLength: 200, nullable: true),
+                    Summary = table.Column<string>(type: "TEXT", maxLength: 2000, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movies", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -31,6 +46,9 @@ namespace GraphQL.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Books");
+
+            migrationBuilder.DropTable(
+                name: "Movies");
         }
     }
 }

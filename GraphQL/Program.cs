@@ -16,6 +16,7 @@ builder.Services
         .AddType<Movie>()
     .AddMutationType(d => d.Name("Mutation"))
         .AddTypeExtension<BookMutations>()
+        .AddTypeExtension<MovieMutations>()
     .AddSubscriptionType(d => d.Name("Subscription"))
         .AddTypeExtension<BookSubscriptions>()
     .AddInMemorySubscriptions();

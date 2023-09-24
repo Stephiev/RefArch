@@ -5,8 +5,11 @@ namespace LibrarySystem.GraphQL.Media
     [ExtendObjectType("Query")]
     public class MediaQueries
     {
-        public IQueryable<IMediaContent> GetMedias([Service] ApplicationDbContext context)  {
-            return context.Books;
-        }
+        public IQueryable<IMediaContent> GetMedias([Service] ApplicationDbContext context) 
+        => context.Movies;
+        // => context.Books;
+        // Switch between the above two 
+        // to see how you can return two differnt types
+        // They don't require common fields
     }
 }

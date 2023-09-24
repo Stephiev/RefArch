@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using LibrarySystem.GraphQL.Data;
 using HotChocolate.Types;
 using HotChocolate;
+using HotChocolate.Subscriptions;
 
 namespace LibrarySystem.GraphQL.Books
 {
@@ -12,7 +13,9 @@ namespace LibrarySystem.GraphQL.Books
 
         public async Task<AddBookPayload> AddBookAsync(
             AddBookInput input,
-            [Service] ApplicationDbContext context)
+            [Service] ApplicationDbContext context,
+            [Service] ITopicEventSender eventSender,
+            CancellationToken cancellationToken) // Can be aborted if the mutation is aborted
         {
             var book = new Book
             {
@@ -23,6 +26,10 @@ namespace LibrarySystem.GraphQL.Books
 
             context.Books.Add(book);
             await context.SaveChangesAsync();
+
+            // In the real world you would want your event paylod
+            // to be small as it's going over the wire
+            await eventSender.SendAsync(nameof(AddBookAsync), book, cancellationToken);
 
             return new AddBookPayload(book);
         }

@@ -308,3 +308,5 @@ testoutput/
 artifacts/
 __mismatch__
 **/*.db
+*Db.*
+*db.*

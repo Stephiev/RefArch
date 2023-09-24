@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "256e2ce4-4b0b-468b-9e47-6ec39d27819c",
+		"name": "GraphQL Reference Architecure",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5105713"
+	},
+	"item": [
+		{
+			"name": "Mutations",
+			"item": [
+				{
+					"name": "AddBook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation AddBook($input: AddBookInput!) {\n  addBook(input: $input) {\n    book {\n        title\n        author\n        summary\n      }\n    }\n}",
+								"variables": "  {\n    \"input\": {\n      \"author\": \"Olivia Rose\",\n      \"title\": \"October Sky\",\n      \"summary\": \"Rockets\"\n    }\n  }"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddBooks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation AddBooks($input1: AddBookInput!, \n$input2: AddBookInput!,\n$input3: AddBookInput!) {\n  thorns: addBook(input: $input1) {\n   book {\n      title\n      author\n      summary\n    }\n  }\n  stand: addBook(input: $input2) {\n    book {\n      title\n      author\n      summary\n    }\n  }\n  october: addBook(input: $input3) {\n    book {\n      title\n      author\n      summary\n    }\n  }\n}",
+								"variables": "{\n  \"input1\": {\n    \"author\": \"Ben John\",\n    \"title\": \"Thorns and Roses\",\n    \"summary\": \"Dragons\"\n  },\n  \"input2\": {\n     \"author\": \"Olivia Rose\",\n    \"title\": \"Stand By Me\",\n    \"summary\": \"Coming of age\"\n  },\n  \"input3\": {\n     \"author\": \"Jen Thomson\",\n    \"title\": \"October Sky\",\n    \"summary\": \"Rockets\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "GetBooks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetBooks {\n  books {\n    id\n    title\n    author\n    summary\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "onAdded",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription {\n  onAdded {\n    title\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

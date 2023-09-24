@@ -13,6 +13,8 @@ builder.Services
         .AddTypeExtension<BookQueries>()
     .AddMutationType(d => d.Name("Mutation"))
         .AddTypeExtension<BookMutations>()
+    .AddSubscriptionType(d => d.Name("Subscription"))
+        .AddTypeExtension<BookSubscriptions>()
     .AddInMemorySubscriptions();
 
 var app = builder.Build();

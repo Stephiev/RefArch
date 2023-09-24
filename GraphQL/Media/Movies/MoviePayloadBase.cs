@@ -5,9 +5,9 @@ namespace LibrarySystem.GraphQL.Media.Movies
 {
     public class MoviePayloadBase : Payload
     {
-        protected MoviePayloadBase(Movie book)
+        protected MoviePayloadBase(Movie movie)
         {
-            Movie = book;
+            Movie = movie;
         }
 
         protected MoviePayloadBase(IReadOnlyList<UserError> errors)

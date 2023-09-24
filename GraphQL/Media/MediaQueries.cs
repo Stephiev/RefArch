@@ -10,6 +10,6 @@ namespace LibrarySystem.GraphQL.Media
         // => context.Books;
         // Switch between the above two 
         // to see how you can return two differnt types
-        // They don't require common fields
+        // Unions do not require any common fields
     }
 }

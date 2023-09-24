@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
 using LibrarySystem.GraphQL.Data;
-using HotChocolate.Types;
-using HotChocolate;
 using HotChocolate.Subscriptions;
+using LibrarySystem.GraphQL.Common;
 
 namespace LibrarySystem.GraphQL.Media.Movies
 {
@@ -17,6 +15,13 @@ namespace LibrarySystem.GraphQL.Media.Movies
             [Service] ITopicEventSender eventSender,
             CancellationToken cancellationToken) // Can be aborted if the mutation is aborted
         {
+
+            // Example of an error
+            if (input.Title == "error") {
+                return new AddMoviePayload(
+                    new UserError("The title cannot be 'error'", "BAD_TITLE_INPUT"));
+            }
+
             var book = new Movie
             {
                 Title = input.Title,

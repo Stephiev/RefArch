@@ -24,3 +24,9 @@ After cloning the app, cd into the root
 Either within Banana Cake Pop or postman you can start interacting with the schema. 
 
 To test out the subscription you'll first need to run the subscription operation and then run the addBook operation. Once the addBook operation is run, you'll see a response for the subscription.
+
+For viewing how errors are surfaced, run the addMovie mutation with the input title as "error".
+
+To demo unions, you can change the return line in "MediaQueries.cs" to see how both a `Movie` and `Book` type can be returned from a single query.
+
+

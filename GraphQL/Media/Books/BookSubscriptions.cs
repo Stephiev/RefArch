@@ -1,6 +1,6 @@
 using LibrarySystem.GraphQL.Data;
 
-namespace LibrarySystem.GraphQL.Books
+namespace LibrarySystem.GraphQL.Media.Books
 {
     [ExtendObjectType("Subscription")]
     public class BookSubscriptions

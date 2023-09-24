@@ -4,7 +4,7 @@ using HotChocolate.Types;
 using HotChocolate;
 using HotChocolate.Subscriptions;
 
-namespace LibrarySystem.GraphQL.Books
+namespace LibrarySystem.GraphQL.Media.Books
 {
 
     [ExtendObjectType("Mutation")]
